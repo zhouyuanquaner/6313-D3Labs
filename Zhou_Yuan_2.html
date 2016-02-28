@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zhou_Yuan_2</title>
+        <style>
+            .item{
+                margin:1px;
+            }
+            body{
+                margin:0px;
+            }
+            h1{
+                background-color:black;
+                padding:4px;
+                margin:0px;
+            }
+            h2{
+                margin:0px;
+                padding:0px;
+                padding-bottom: 15px;
+            }
+
+            ul{
+                padding:0px;
+                list-style:none;
+            }
+            ul li{
+                list-style:none;
+            }
+            ul li:hover{
+                background-color:black;
+                color:white;
+                cursor:pointer;
+            }
+            
+            div#content{
+                padding:10px;
+            }
+        </style>
+    </head>
+    <body style="font-family:Sans-serif;">
+        <h1 style="color:white" id="Title">Gapiminder - Wealth and Health of Nations</h1>
+        <div id="content">
+            <h2>Countries</h2>
+        </div>
+    </body>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script>
+       var content = d3.select("#content");
+        d3.json("https://raw.githubusercontent.com/CristianFelix/infoviz/master/gapminder.json", function(error, result){
+            countries = result;
+             addCountry();                         
+        })
+        
+        function addCountry(){
+            var changes = content.selectAll("div").data(countries, function(d){return d.name});
+            
+            changes.enter()
+                    .append("div")
+                    .attr("class", "item")
+                    .text(function(d){return d.name});
+        }
+    </script>
+</html>
