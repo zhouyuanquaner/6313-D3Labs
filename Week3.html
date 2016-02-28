@@ -51,7 +51,7 @@
         d3.json("https://raw.githubusercontent.com/CristianFelix/infoviz/master/Week%203/newData.json", function(error, result){
             console.log(result);
             var country = result[0];
-            var year = 2008;
+            
             console.log(country);
             console.log(country.income[year]);
             console.log(country.lifeExpectancy[year]);
@@ -75,6 +75,7 @@
         
         var viz = d3.select("#dotGroup");
         
+        var year = 2008;
         var width = 600,
             height = 450,
             margin = {top : 90, bottom:20, left:20, right:20},
